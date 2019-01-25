@@ -1,0 +1,26 @@
+version: '3.6'
+
+networks:
+  ansible:
+    external: false
+
+services:
+  ansible:
+    build:
+      context: .
+      dockerfile: ./docker/ansible/Dockerfile
+    volumes:
+      - ./docker/ansible/rootfs/opt/entrypoint.sh:/opt/entrypoint.sh
+      - ./docker/shared/ssh/:/home/ansible/.ssh
+  #  entrypoint: bash
+    networks:
+      - ansible
+
+  sshd:
+    build:
+      context: .
+      dockerfile: ./docker/sshd/Dockerfile
+    networks:
+      - ansible
+    ports:
+      - "5555:22"
