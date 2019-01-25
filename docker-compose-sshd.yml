@@ -1,0 +1,34 @@
+version: '3.6'
+
+networks:
+  ansible:
+    external: false
+
+services:
+  sshd1:
+    build:
+      context: .
+      dockerfile: ./docker/sshd/Dockerfile
+    image: test-ansible:latest
+    networks:
+      - ansible
+
+  sshd2:
+    image: test-ansible:latest
+    networks:
+      - ansible
+
+  sshd3:
+    image: test-ansible:latest
+    networks:
+      - ansible
+
+  sshd4:
+    image: test-ansible:latest
+    networks:
+      - ansible
+
+  sshd5:
+    image: test-ansible:latest
+    networks:
+      - ansible

@@ -12,15 +12,7 @@ services:
     volumes:
       - ./docker/ansible/rootfs/opt/entrypoint.sh:/opt/entrypoint.sh
       - ./docker/shared/ssh/:/home/ansible/.ssh
-  #  entrypoint: bash
+      - ./docker/ansible/rootfs/etc/ansible/hosts:/etc/ansible/hosts
+    entrypoint: bash
     networks:
       - ansible
-
-  sshd:
-    build:
-      context: .
-      dockerfile: ./docker/sshd/Dockerfile
-    networks:
-      - ansible
-    ports:
-      - "5555:22"
