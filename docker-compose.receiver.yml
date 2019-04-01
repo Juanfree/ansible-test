@@ -1,0 +1,14 @@
+version: '3.6'
+
+networks:
+  ansible:
+    external: false
+
+services:
+  receiver:
+    build:
+      context: .
+      dockerfile: docker/receiver/Dockerfile
+    image: test-ansible:latest
+    networks:
+      - ansible

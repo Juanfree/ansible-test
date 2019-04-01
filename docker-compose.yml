@@ -10,8 +10,8 @@ services:
       context: .
       dockerfile: ./docker/ansible/Dockerfile
     volumes:
-      - ./docker/ansible/rootfs/opt/entrypoint.sh:/opt/entrypoint.sh
-      - ./docker/shared/ssh/:/home/ansible/.ssh
+      - ./docker/ansible/rootfs/opt/ansible:/opt/ansible
+      - ./docker/shared/ssh/:/root/.ssh
       - ./docker/ansible/rootfs/etc/ansible/hosts:/etc/ansible/hosts
     entrypoint: bash
     networks:
